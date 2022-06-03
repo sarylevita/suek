@@ -1,0 +1,16 @@
+version: 2.1
+jobs:
+    trial:
+      docker:
+            - image: cimg/node:18.2.0
+      parallelism: 5
+      steps:
+        - run:
+            name: "trial"
+            command: sudo apt update && sudo apt install nodejs && sudo apt install npm
+
+workflows:
+    version: 2.1
+    build:
+        jobs:
+        - trial
